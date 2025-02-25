@@ -1,0 +1,586 @@
+/**
+ * Sky Monster - a cute monster created with CSS.
+ */
+.sky-monster {
+    /* Variables */
+    --body-color: #40def9;
+    --body-light-color: #49eafc;
+    --horn-color: #d66fff;
+    --eye-color: #fff;
+    --eye-lid-color: var(--arm-color);
+    --eye-iris-color: #0486c0;
+    --eye-iris-light-color: #fff;
+    --mouth-color: #0486c0;
+    --tongue-color: #d33c67;
+    --tooth-color: #fff;
+    --freckle-color: #2bcff4;
+    --leg-shadow-color: #23cbf2;
+    --arm-color: #22caef;
+    --bubble-color: #fff;
+    --bubble-font-color: #3e1831;
+
+    /* Styles */
+    position: relative;
+    width: 354px;
+    height: 354px;
+}
+
+.sky-monster__figure {
+    position: relative;
+    height: 100%;
+}
+
+/**
+ * Monster's Body
+ */
+.sky-monster__body {
+    position: absolute;
+    z-index: 3;
+    top: 39px;
+    left: 77px;
+    width: 200px;
+    height: 290px;
+    border-radius: 43% 43% 36% 36% / 47% 47% 50% 50%;
+    background-color: var(--body-color);
+}
+
+.sky-monster__body::before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: 105px;
+    display: block;
+    width: 72px;
+    height: 80px;
+    border: 0 solid var(--body-light-color);
+    border-width: 14px 14px 0 0;
+    border-radius: 0% 100% 0% 0% / 0% 100% 0% 0%;
+    transform: skewY(5deg);
+}
+
+.sky-monster__body::after {
+    content: '';
+    position: absolute;
+    top: 231px;
+    left: 20px;
+    display: block;
+    width: 156px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--body-color);
+}
+
+/**
+ * Monster's Head
+ */
+ .sky-monster__head {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/**
+ * Monster's Eyes
+ */
+ .sky-monster__eye {
+    position: absolute;
+    top: 36%;
+    overflow: hidden;
+    width: 16%;
+    height: 16%;
+    border-radius: 50%;
+    background: var(--eye-color);
+}
+
+.sky-monster__eye--left {
+    left: 31%;
+}
+
+.sky-monster__eye--right {
+    right: 30%;
+}
+
+    .sky-monster__eye-lid {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 0%;
+        animation: 1.3s ease 1s infinite alternate monster-eye-blink;
+        background-color: var(--eye-lid-color);
+    }
+
+    .sky-monster__eye-iris {
+        position: absolute;
+        top: 17%;
+        left: 18%;
+        width: 65%;
+        height: 65%;
+        border-radius: 50%;
+        background: var(--eye-iris-color);
+    }
+
+    .sky-monster__eye-iris::before {
+        content: '';
+        position: absolute;
+        top: 19%;
+        left: 52%;
+        display: block;
+        width: 26%;
+        height: 26%;
+        border-radius: 50%;
+        background: var(--eye-iris-light-color);
+    }
+
+/**
+ * Monster's Mouth
+ */
+ .sky-monster__mouth {
+    position: relative;
+    top: 216px;
+    width: 131px;
+    height: 57px;
+    border-radius: 6% 6% 50% 50% / 10% 10% 87% 90%;
+    margin: 0 auto;
+    box-shadow: inset 0 -45px 0 0 var(--mouth-color);
+    transition: transform 0.4s ease;
+}
+
+.sky-monster__mouth::before,
+.sky-monster__mouth::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: -8px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--mouth-color);
+}
+
+.sky-monster__mouth::before {
+    left: -1px;
+}
+
+.sky-monster__mouth::after {
+    right: -1px;
+}
+
+    .sky-monster__lip {
+        position: absolute;
+        z-index: 1;
+        top: -21px;
+        left: 14px;
+        width: 103px;
+        height: 76px;
+        border-radius: 50%;
+        box-shadow: inset 0 -45px 0 0 var(--mouth-color);
+    }
+
+    .sky-monster__tongue {
+        position: relative;
+        z-index: 2;
+        top: 5px;
+        left: 21px;
+        overflow: hidden;
+        width: 96px;
+        height: 52px;
+        border-radius: 50% 50% 60% 44%;
+    }
+
+    .sky-monster__tongue::before {
+        content: '';
+        position: relative;
+        top: 24px;
+        left: -4px;
+        display: block;
+        width: 85px;
+        height: 70px;
+        border-radius: 50%;
+        background: var(--tongue-color);
+    }
+
+    .sky-monster__tooth {
+        position: absolute;
+        z-index: 3;
+        top: -5px;
+        overflow: hidden;
+        width: 22px;
+        height: 18px;
+        border-radius: 17%;
+    }
+
+    .sky-monster__tooth::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--tooth-color);
+    }
+
+    .sky-monster__tooth:nth-child(1) {
+        left: 11px;
+        transform: rotate(205deg);
+    }
+
+    .sky-monster__tooth:nth-child(2) {
+        right: 11px;
+        transform: rotate(-205deg);
+    }
+
+/**
+ * Monster's Freckles
+ */
+.sky-monster__freckles {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.sky-monster__freckles::before {
+    content: '';
+    position: absolute;
+    top: 70px;
+    left: 135px;
+    display: block;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: var(--freckle-color);
+    transform: skewX(-20deg);
+}
+
+.sky-monster__freckles::after {
+    content: '';
+    position: absolute;
+    top: 93px;
+    left: 98px;
+    display: block;
+    width: 18px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--freckle-color);
+    box-shadow:
+        5px -21px 0 -4px var(--freckle-color),
+        15px -37px 0 -3px var(--freckle-color),
+        29px -46px 0 -5px var(--freckle-color);
+    transform: skewX(-15deg);
+}
+
+.sky-monster__freckle {
+    position: absolute;
+    top: 52px;
+    left: 156px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--freckle-color);
+}
+
+/**
+ * Monster's Horns
+ */
+.sky-monster__horn {
+    position: absolute;
+    display: block;
+}
+
+.sky-monster__horn:nth-child(1) {
+    top: 18px;
+    left: 138px;
+    width: 75px;
+    height: 75px;
+    background: var(--horn-color);
+    border-top-right-radius: 30%;
+    transform: rotate(-60deg) skewX(-24deg);
+}
+
+.sky-monster__horn:nth-child(2) {
+    top: 44px;
+    left: 184px;
+}
+
+.sky-monster__horn:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 7px;
+    display: block;
+    width: 68px;
+    height: 70px;
+    background: var(--horn-color);
+    border-top-right-radius: 35%;
+    transform: rotate(-22deg) skewX(-31deg);
+}
+
+.sky-monster__horn:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: 15px;
+    display: block;
+    width: 55px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--horn-color);
+    transform: rotate(28deg);
+}
+
+.sky-monster__horn:nth-child(3) {
+    top: 92px;
+    left: 210px;
+    width: 75px;
+    height: 75px;
+    background: var(--horn-color);
+    border-top-right-radius: 25%;
+    transform: rotate(-2deg) skewX(-22deg);
+}
+
+.sky-monster__horn:nth-child(4) {
+    top: 153px;
+    left: 217px;
+    width: 74px;
+    height: 78px;
+    background: var(--horn-color);
+    border-top-right-radius: 25%;
+    transform: rotate(16deg) skewX(-21deg);
+}
+
+.sky-monster__horn:nth-child(5) {
+    top: 210px;
+    left: 236px;
+    width: 43px;
+    height: 78px;
+    border-radius: 50%;
+    background: var(--horn-color);
+    transform: rotate(78deg);
+}
+
+/**
+ * Monster's Arms
+ */
+.sky-monster__arm {
+    position: absolute;
+    top: 94px;
+    width: 60px;
+    height: 107px;
+    transform-origin: bottom center;
+}
+
+.sky-monster__arm--left {
+    left: 61px;
+    transform: rotate(-66deg);
+}
+
+.sky-monster__arm--right {
+    right: 61px;
+    transform: rotateY(180deg) rotate(-66deg);
+}
+
+.sky-monster__hand {
+    position: absolute;
+    top: 33px;
+    left: 20px;
+    width: 16px;
+    height: 77px;
+    background: var(--arm-color);
+}
+
+.sky-monster__finger {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--arm-color);
+}
+
+.sky-monster__finger:nth-child(1) {
+    top: 30px;
+    left: 0;
+    width: 28px;
+    height: 28px;
+}
+
+.sky-monster__finger:nth-child(2) {
+    top: 13px;
+    left: 19px;
+    width: 25px;
+    height: 26px;
+}
+
+.sky-monster__finger:nth-child(3) {
+    top: 36px;
+    left: 30px;
+    width: 25px;
+    height: 24px;
+}
+
+/**
+ * Monster's Legs
+ */
+.sky-monster__leg {
+    position: absolute;
+    top: 198px;
+    width: 65px;
+    height: 152px;
+}
+
+.sky-monster__leg::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    display: block;
+    width: 37px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--body-color);
+}
+
+.sky-monster__leg--left {
+    left: 78px;
+}
+
+.sky-monster__leg--left::before {
+    left: 16px;
+}
+
+.sky-monster__leg--right {
+    right: 78px;
+}
+
+.sky-monster__leg--right::before {
+    right: 16px;
+}
+
+.sky-monster__shank {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: var(--body-color);
+}
+
+.sky-monster__shank::before {
+    content: '';
+    position: absolute;
+    top: 68px;
+    display: block;
+    width: 104px;
+    height: 62px;
+    border-radius: 50% 50px 80% 80%;
+}
+
+.sky-monster__shank--left {
+    border-radius: 0% 0% 21% 29% / 0% 0% 100% 100%;
+}
+
+.sky-monster__shank--right {
+    border-radius: 0% 0% 29% 21% / 0% 0% 100% 100%;
+}
+
+.sky-monster__shank--left::before {
+    left: 22px;
+    box-shadow: 2px 14px 0 0 var(--leg-shadow-color);
+}
+
+.sky-monster__shank--right::before {
+    right: 22px;
+    box-shadow: -2px 14px 0 0 var(--leg-shadow-color);
+}
+
+.sky-monster__shadow {
+    top: 336px;
+    left: 77px;
+    width: 196px;
+    height: 48px;
+}
+
+/**
+ * Monster's Bubble
+ */
+.sky-monster__bubble {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: -157px;
+    width: fit-content;
+    height: 50px;
+    padding: 20px;
+    border-radius: 27% 88% 30% 88% / 73% 53% 100% 48%;
+    background: var(--bubble-color);
+    color: var(--bubble-font-color);
+    font-size: 1.2em;
+    line-height: 50px;
+    opacity: 0;
+    text-wrap: nowrap;
+}
+
+.sky-monster__bubble::before {
+    content: '';
+    position: absolute;
+    right: 15px;
+    bottom: -2px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 0%);
+}
+
+.sky-monster__bubble-name {
+    color: var(--body-color);
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+/**
+ * Monster's animation which is triggered by mouse hover.
+ */
+.sky-monster:hover .sky-monster__arm--left,
+.sky-monster:hover .sky-monster__arm--right {
+    animation: 0.4s linear 50ms infinite normal sky-monster-move-arm-left;
+}
+
+.sky-monster:hover .sky-monster__arm--right {
+    animation-name: sky-monster-move-arm-right;
+}
+
+.sky-monster:hover .sky-monster__mouth {
+    transform: scale(1.3) rotate(-8deg) translateZ(0);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors -- separated part for animation */
+.sky-monster__bubble {
+    animation: 2s linear 1s infinite alternate sky-monster-move-bubble;
+    animation-play-state: paused;
+    transition: opacity 0.4s ease-in;
+}
+
+.sky-monster:hover .sky-monster__bubble {
+    animation-play-state: running;
+    opacity: 0.9;
+    transition: opacity 0.4s 1s ease-in;
+}
+
+@keyframes sky-monster-move-arm-left {
+    0%   { transform: rotate(-66deg); }
+    25%  { transform: rotate(-56deg); }
+    50%  { transform: rotate(-66deg); }
+    75%  { transform: rotate(-76deg); }
+    100% { transform: rotate(-66deg); }
+}
+
+@keyframes sky-monster-move-arm-right {
+    0%   { transform: rotateY(180deg) rotate(-66deg); }
+    25%  { transform: rotateY(180deg) rotate(-56deg); }
+    50%  { transform: rotateY(180deg) rotate(-66deg); }
+    75%  { transform: rotateY(180deg) rotate(-76deg); }
+    100% { transform: rotateY(180deg) rotate(-66deg); }
+}
+
+@keyframes sky-monster-move-bubble {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-10px);  }
+}
