@@ -1,0 +1,39 @@
+{
+  "name": "css-monster",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cute Monster. Cartoon creature drawn in pure CSS/HTML.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky",
+    "start": "live-server ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "branchlint": "validate-branch-name",
+    "commitlint": "commitlint --edit",
+    "stylelint": "stylelint \"./src/**/*.css\"",
+    "eslint": "eslint \"./src/**/*.js\""
+  },
+  "keywords": [
+    "drawing",
+    "css",
+    "monster"
+  ],
+  "license": "MIT",
+  "author": "Radim Buchtela <buchtela.radim@gmail.com>",
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@stylistic/stylelint-plugin": "^3.1.1",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "husky": "^9.1.7",
+    "live-server": "^1.2.2",
+    "stylelint": "^16.14.1",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-two-dash-bem": "^1.0.0",
+    "validate-branch-name": "^1.3.2"
+  }
+}

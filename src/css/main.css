@@ -1,0 +1,147 @@
+/* Remove list styles on ul elements */
+ul {
+    list-style: none;
+}
+
+/* Remove default padding and margin */
+html,
+body
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+:root {
+    --dark-strong-color: rgb(62 24 49);
+    --dark-main-color: rgb(99 38 78);
+    --dark-soft-color: rgb(136 52 107);
+    --light-color: rgb(255 251 255);
+}
+
+/**
+ * Main Styles
+ */
+html {
+    height:100%;
+}
+
+body {
+    color: var(--dark-strong-color);
+    font-family: Grandstander, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+a {
+    margin: 0 1px;
+    color: var(--dark-main-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--light-color);
+}
+
+/**
+ * Icons
+ */
+ .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--dark-main-color);
+    mask-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.icon-github { mask-image: url('../icons/github.svg'); }
+.icon-www { mask-image: url('../icons/globe.svg'); }
+.icon-linkedin { mask-image: url('../icons/linkedin.svg'); }
+
+
+/**
+ * Header block
+ */
+.header {
+    color: var(--light-color);
+    text-align: center;
+}
+
+.header__title {
+    margin: 36px 0 0;
+    font-size: 3.4em;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px rgb(255 255 255 / 80%);
+}
+
+.header__description {
+    margin: 1px 0 14px;
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+.header__links {
+    color: var(--dark-soft-color);
+    font-size: 1.1em;
+}
+
+    .header__link-text {
+        text-decoration: underline dotted;
+        text-underline-offset: 4px;
+    }
+
+    .header__author-name {
+        color: var(--dark-main-color);
+    }
+
+    .socials__list,
+    .socials__item {
+        display: inline;
+    }
+
+    .socials__link {
+        position: relative;
+        display: inline-block;
+    }
+
+    .socials__link::before {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 50%;
+        padding: 0.5em 1em;
+        border-radius: 100px;
+        background-color: var(--dark-main-color);
+        color: var(--light-color);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-50%) translateY(-25px);
+        transition: none 200ms ease;
+        transition-property: opacity, transform;
+    }
+
+    .socials__link:hover::before {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-45px);
+    }
+
+    .header__link:hover > .icon,
+    .socials__link:hover > .icon {
+        background-color: var(--light-color);
+    }
+
+/**
+ * Custom Backgrounds, https://uigradients.com/
+ */
+.bg-pinky {
+    background: #DD5E89;  /* fallback for old browsers */
+    background: linear-gradient(to right, #F7BB97, #DD5E89); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.bg-atlas {
+    background: #FEAC5E;  /* fallback for old browsers */
+    background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

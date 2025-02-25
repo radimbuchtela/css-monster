@@ -1,0 +1,14 @@
+/** 
+ * Grandstander fonts
+ */
+@font-face {
+    font-family: Grandstander;
+    font-weight: 400;
+    src: url('../fonts/Grandstander/Grandstander-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Grandstander;
+    font-weight: 700;
+    src: url('../fonts/Grandstander/Grandstander-Bold.ttf') format('truetype');
+}
