@@ -1,1 +1,1 @@
-npm run branchlint && npm run commitlint $1
+npm run branchlint && npm run commitlint $1 && npm run stylelint

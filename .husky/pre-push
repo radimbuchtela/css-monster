@@ -1,1 +1,1 @@
-npm run branchlint
+npm run branchlint && npm run stylelint
