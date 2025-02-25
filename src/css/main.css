@@ -134,6 +134,20 @@ a:hover {
     }
 
 /**
+ * Monsters block
+ */
+.monsters__list {
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+.monster {
+    display: inline-block;
+    margin: 0 20px;
+    vertical-align: bottom;
+}
+
+/**
  * Custom Backgrounds, https://uigradients.com/
  */
 .bg-pinky {
