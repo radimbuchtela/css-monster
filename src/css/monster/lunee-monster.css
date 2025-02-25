@@ -1,0 +1,519 @@
+/**
+ * Lunee Monster - a cute monster created with CSS.
+ */
+.lunee-monster {
+    /* Variables */
+    --body-color: #fde46d;
+    --body-light-color: #faed8f;
+    --body-shadow-color: #f9d74f;
+    --horn-color: #2ed9ea;
+    --eye-lid-color: var(--arm-leg-color);
+    --eye-color: #fff;
+    --eye-iris-color: #a17206;
+    --eye-iris-light-color: #fff;
+    --mouth-color: #74410a;
+    --tongue-color: #d33c67;
+    --tooth-color: #fff;
+    --freckle-color: #e4a138;
+    --arm-leg-color: #ffce4f;
+    --arm-leg-light-color: var(--body-color);
+    --finger-color: #ffa249;
+    --bubble-color: #fff;
+    --bubble-font-color: #3e1831;
+
+    /* Styles */
+    position: relative;
+    width: 318px;
+    height: 318px;
+}
+
+.lunee-monster__figure {
+    position: relative;
+    height: 100%;
+}
+
+/**
+ * Monster's Horns
+ */
+.lunee-monster__horn {
+    position: absolute;
+    top: 1px;
+    width: 64px;
+    height: 64px;
+    border-radius: 23% 79% 13% 17% / 100% 100% 0% 0%;
+    box-shadow: inset -32px 0 0 0 var(--horn-color);
+    transform-origin: bottom center;
+    transition: transform 0.3s ease;
+}
+
+.lunee-monster__horn::before,
+.lunee-monster__horn::after {
+    content: '';
+    position: absolute;
+    display: block;
+}
+
+.lunee-monster__horn::before {
+    width: 100%;
+    height: 100%;
+    border-radius: 23% 79% 13% 17% / 100% 100% 42% 0%;
+    box-shadow: inset -31px 0 0 0 var(--horn-color);
+    transform: rotate(12deg) translate(-9px, 14px);
+}
+
+.lunee-monster__horn::after {
+    top: 0;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--horn-color);
+}
+
+.lunee-monster__horn--left {
+    left: 58px;
+    transform: rotateY(180deg) rotate(45deg);
+}
+
+.lunee-monster__horn--right {
+    right: 58px;
+    transform: rotate(45deg);
+}
+
+/**
+ * Monster's Body
+ */
+.lunee-monster__body {
+    position: relative;
+    z-index: 2;
+    top: 10px;
+    overflow: hidden;
+    width: 229px;
+    height: 273px;
+    border-radius: 48% 48% 50% 50% / 65% 65% 31% 31%;
+    margin: 0 auto;
+    background: var(--body-shadow-color);
+}
+
+.lunee-monster__body::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 48% 48% 50% 50% / 65% 65% 31% 31%;
+    background: var(--body-color);
+}
+
+/**
+ * Monster's Head
+ */
+.lunee-monster__head {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lunee-monster__head::before {
+    content: '';
+    position: absolute;
+    top: 17px;
+    left: 151px;
+    display: block;
+    width: 70px;
+    height: 49px;
+    border: 0 solid var(--body-light-color);
+    border-width: 14px 14px 0 0;
+    border-radius: 0% 100% 0% 0% / 0% 100% 0% 0%;
+}
+
+/**
+ * Monster's Eyes
+ */
+.lunee-monster__eye {
+    position: absolute;
+    top: 83px;
+    overflow: hidden;
+    width: 67px;
+    height: 63px;
+    border-radius: 50%;
+    background: var(--eye-color);
+}
+
+.lunee-monster__eye--left {
+    left: 80px;
+}
+
+.lunee-monster__eye--right {
+    right: 80px;
+}
+
+    .lunee-monster__eye-lid {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 0%;
+        animation: 1.5s ease 2s infinite alternate monster-eye-blink;
+        background-color: var(--eye-lid-color);
+    }
+
+    .lunee-monster__eye-iris {
+        position: absolute;
+        top: 17%;
+        left: 17%;
+        width: 66%;
+        height: 66%;
+        border-radius: 50%;
+        background: var(--eye-iris-color);
+    }
+
+    .lunee-monster__eye-iris::before {
+        content: '';
+        position: absolute;
+        top: 19%;
+        left: 52%;
+        display: block;
+        width: 26%;
+        height: 26%;
+        border-radius: 50%;
+        background: var(--eye-iris-light-color);
+    }
+
+/**
+ * Monster's Mouth
+ */
+.lunee-monster__mouth {
+    position: relative;
+    top: 55%;
+    overflow: hidden;
+    width: 45%;
+    height: 21%;
+    border-radius: 6% 6% 45% 45% / 10% 10% 87% 90%;
+    margin: 0 auto;
+    background: var(--mouth-color);
+    transition: transform 0.4s ease;
+}
+
+.lunee-monster__mouth::before {
+    content: '';
+    position: relative;
+    z-index: 2;
+    top: -16px;
+    display: block;
+    width: 134px;
+    height: 29px;
+    border-radius: 0 0 57% 57% / 0% 0% 89% 89%;
+    margin: 0 auto;
+    background: var(--body-color);
+}
+
+    .lunee-monster__tongue {
+        position: relative;
+        top: 7px;
+        display: block;
+        width: 120px;
+        height: 72px;
+        border-radius: 50% 50% 0% 0%;
+        margin: 0 auto;
+        background: var(--tongue-color);
+    }
+
+    .lunee-monster__tooth {
+        position: absolute;
+        top: 0;
+        display: block;
+        width: 20px;
+        height: 25px;
+        border-radius: 50%;
+        background: var(--tooth-color);
+    }
+
+    .lunee-monster__tooth:nth-child(1) {
+        top: -10px;
+        left: 4px;
+    }
+
+    .lunee-monster__tooth:nth-child(2) {
+        top: -4px;
+        left: 29px;
+        border-radius: 3% 10% 76% 14% / 0% 0% 100% 100%;
+    }
+
+    .lunee-monster__tooth:nth-child(3) {
+        top: 0;
+        left: 52px;
+    }
+
+    .lunee-monster__tooth:nth-child(4) {
+        top: -1px;
+        left: 75px;
+        width: 24px;
+        border-radius: 3% 10% 47% 72% / 0% 0% 100% 100%;
+    }
+
+    .lunee-monster__tooth:nth-child(5) {
+        top: -5px;
+        left: 99px;
+        border-radius: 3% 10% 33% 50% / 0% 0% 100% 100%;
+    }
+
+    .lunee-monster__tooth:nth-child(6) {
+        top: -10px;
+        left: 120px;
+        border-radius: 3% 10% 100% 33% / 0% 0% 100% 100%;
+    }
+
+/**
+ * Monster's Freckles
+ */
+.lunee-monster__freckles {
+    position: absolute;
+    top: 144px;
+    left: 50%;
+    width: 184px;
+    height: 20px;
+    transform: translateX(-50%);
+}
+
+.lunee-monster__freckles::before,
+.lunee-monster__freckles::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--freckle-color);
+}
+
+.lunee-monster__freckles::before {
+    left: 7px;
+    box-shadow:
+        -9px 9px 0 0 var(--freckle-color),
+        8px 12px 0 1px var(--freckle-color);
+}
+
+.lunee-monster__freckles::after {
+    right: 7px;
+    box-shadow:
+        9px 9px 0 0 var(--freckle-color),
+        -8px 12px 0 1px var(--freckle-color);
+}
+
+/**
+ * Monster's Arms
+ */
+.lunee-monster__arm {
+    position: absolute;
+    z-index: 1;
+    top: 117px;
+    width: 46px;
+    transform-origin: top center;
+}
+
+.lunee-monster__arm--left {
+    left: 53px;
+    transform: rotate(26deg);
+}
+
+.lunee-monster__arm--right {
+    right: 53px;
+    transform: rotateY(180deg) rotate(26deg)
+}
+
+    .lunee-monster__hand {
+        position: absolute;
+        z-index: 2;
+        overflow: hidden;
+        width: 46px;
+        height: 113px;
+        border-radius: 23px;
+        background: var(--arm-leg-color);
+    }
+
+    .lunee-monster__hand::before {
+        content: '';
+        position: absolute;
+        top: 61px;
+        left: -10px;
+        display: block;
+        width: 37px;
+        height: 53px;
+        border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%;
+        background: var(--arm-leg-light-color);
+        transform: rotate(-183deg);
+    }
+
+    .lunee-monster__finger {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 9% 100% 100% 0% / 100% 100% 3% 0%;
+        background: var(--finger-color);
+    }
+
+    .lunee-monster__finger:nth-child(1) {
+        top: 100px;
+        left: 0;
+        transform: rotate(6deg);
+    }
+
+    .lunee-monster__finger:nth-child(2) {
+        top: 108px;
+        left: 14px;
+        transform: rotate(-38deg);
+    }
+
+    .lunee-monster__finger:nth-child(3) {
+        top: 104px;
+        left: 30px;
+        transform: rotate(-77deg);
+    }
+
+/**
+ * Monster's Legs
+ */
+.lunee-monster__leg {
+    position: absolute;
+    top: 242px;
+    width: 54px;
+    height: 73px;
+    border-radius: 51% 55% 60% 70% / 0% 55% 67% 100%;
+    background: var(--arm-leg-light-color);
+    box-shadow: inset -18px 38px 0 0 var(--arm-leg-color);
+}
+
+.lunee-monster__leg--left {
+    left: 84px;
+    transform: rotate(-10deg);
+}
+
+.lunee-monster__leg--right {
+    right: 84px;
+    transform: rotate(10deg) rotateY(180deg);
+}
+
+.lunee-monster__shadow {
+    top: 292px;
+    left: 50px;
+    width: 221px;
+    height: 48px;
+}
+
+/**
+ * Monster's Bubble
+ */
+.lunee-monster__bubble {
+    position: absolute;
+    z-index: 4;
+    top: -50px;
+    left: 238px;
+    width: fit-content;
+    min-height: 50px;
+    padding: 20px;
+    border-radius: 27% 88% 30% 88% / 73% 53% 100% 48%;
+    background: var(--bubble-color);
+    color: var(--bubble-font-color);
+    font-size: 1.2em;
+    line-height: 50px;
+    opacity: 0;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.lunee-monster__bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 15px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    clip-path: polygon(100% 0%, 0% 100%, 0% 0%);
+}
+
+.lunee-monster__bubble-name {
+    color: var(--body-color);
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+/**
+ * Monster's animation which is triggered by mouse hover.
+ */
+.lunee-monster:hover .lunee-monster__figure {
+    animation: 0.4s ease 50ms infinite alternate lunee-monster-jump;
+}
+
+.lunee-monster:hover .lunee-monster__shadow{
+    animation: 0.4s ease 50ms infinite alternate lunee-monster-shadow-jump;
+}
+
+.lunee-monster:hover .lunee-monster__horn--left {
+    transform: rotateY(180deg) rotate(55deg);
+}
+
+.lunee-monster:hover .lunee-monster__horn--right {
+    transform: rotate(55deg);
+}
+
+.lunee-monster:hover .lunee-monster__arm--left,
+.lunee-monster:hover .lunee-monster__arm--right {
+    animation: 0.4s ease 50ms infinite alternate lunee-monster-move-arm-left;
+}
+
+.lunee-monster:hover .lunee-monster__arm--right {
+    animation-name: lunee-monster-move-arm-right;
+}
+
+.lunee-monster:hover .lunee-monster__mouth {
+    transform: scale(1.1) translateZ(0);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors -- separated part for animation */
+.lunee-monster__bubble {
+    animation: 2s linear 1s infinite alternate lunee-monster-move-bubble;
+    animation-play-state: paused;
+    transition: opacity 0.4s ease-in;
+}
+
+.lunee-monster:hover .lunee-monster__bubble {
+    animation-play-state: running;
+    opacity: 0.9;
+    transition: opacity 0.4s 1s ease-in;
+}
+
+@keyframes lunee-monster-jump {
+    0%   { top: 0; }
+    100% { top: -15px; }
+}
+
+@keyframes lunee-monster-shadow-jump {
+    0%   { transform: scale(1); }
+    100% { transform: scale(0.7); }
+}
+
+@keyframes lunee-monster-move-arm-left {
+    0%   { transform: rotate(26deg); }
+    100%  { transform: rotate(36deg); }
+}
+
+@keyframes lunee-monster-move-arm-right {
+    0%   { transform: rotateY(180deg) rotate(26deg); }
+    100%  { transform: rotateY(180deg) rotate(36deg); }
+}
+
+@keyframes lunee-monster-move-bubble {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-10px);  }
+}
