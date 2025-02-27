@@ -76,17 +76,24 @@ jobs:
         run: |
           HTML_FILE_PATH="./src/index.html"
           NEW_VERSION="${{ needs.bump-version.outputs.new-version }}"
+          VERSION_PLACEHOLDER="{{app-version}}"
+
+          if [ ! -f "$HTML_FILE_PATH" ]; then
+            echo "Error: $HTML_FILE_PATH is missing!" >&2
+            exit 1
+          fi
 
           if [ -z "$NEW_VERSION" ]; then
             echo "Error: NEW_VERSION is not set or empty!" >&2
             exit 1
           fi
 
-          if [ ! -f "$HTML_FILE_PATH" ]; then
-            echo "Error: $HTML_FILE_PATH is missing!" >&2
+          if ! grep -q "$VERSION_PLACEHOLDER" "$HTML_FILE_PATH"; then
+            echo "Error: placeholder '$VERSION_PLACEHOLDER' is missing in $HTML_FILE_PATH"
             exit 1
           fi
-          sed -i "" "s/{{app-version}}/$NEW_VERSION/g" "$HTML_FILE_PATH"
+
+          sed -i "" "s/$VERSION_PLACEHOLDER/$NEW_VERSION/g" "$HTML_FILE_PATH"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
