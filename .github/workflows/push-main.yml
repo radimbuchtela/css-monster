@@ -21,19 +21,79 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  ga_node_version: 22
+
 jobs:
-  # Single deploy job since we're just deploying
+  bump-version:
+    runs-on: ubuntu-latest
+    outputs:
+      new-version: ${{ steps.bump.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js with version ${{ env.ga_node_version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.ga_node_version }}
+
+      - name: Bump Package Version
+        id: bump
+        run: |
+          CURRENT_VERSION=$(npm pkg get version | tr -d '"')
+          echo "Current version: $CURRENT_VERSION"
+
+          npm version patch --no-git-tag-version
+
+          NEW_VERSION=$(npm pkg get version | tr -d '"')
+          echo "New version: $NEW_VERSION"
+          echo "version=${NEW_VERSION}" >> $GITHUB_ENV
+          echo "version=${NEW_VERSION}" >> $GITHUB_OUTPUT
+
+      - name: Commit new version, create Git tag and push changes and tag
+        run: |
+          git add .
+          git commit -m "Bump version to ${{ env.version }}"
+          git tag "v${{ env.version }}"
+          git push origin ${{ github.ref_name }} --tags
+
+  # Deploy app
   deploy-to-pages:
+    needs: bump-version
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Replace `{{app-version}}` in HTML File
+        run: |
+          HTML_FILE_PATH="./src/index.html"
+          NEW_VERSION="${{ needs.bump-version.outputs.new-version }}"
+          VERSION_PLACEHOLDER="{{app-version}}"
+
+          if [ ! -f "$HTML_FILE_PATH" ]; then
+            echo "Error: $HTML_FILE_PATH is missing!" >&2
+            exit 1
+          fi
+
+          if [ -z "$NEW_VERSION" ]; then
+            echo "Error: NEW_VERSION is not set or empty!" >&2
+            exit 1
+          fi
+
+          if ! grep -q "$VERSION_PLACEHOLDER" "$HTML_FILE_PATH"; then
+            echo "Error: placeholder '$VERSION_PLACEHOLDER' is missing in $HTML_FILE_PATH"
+            exit 1
+          fi
+
+          sed -i "" "s/$VERSION_PLACEHOLDER/$NEW_VERSION/g" "$HTML_FILE_PATH"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
