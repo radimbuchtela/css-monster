@@ -59,7 +59,7 @@ jobs:
           git add .
           git commit -m "Bump version to ${{ env.version }}"
           git tag "v${{ env.version }}"
-          git push origin ${{ github.ref_name }} --tags
+          git push --no-verify origin ${{ github.ref_name }} --tags
 
   # Deploy app
   deploy-to-pages:
