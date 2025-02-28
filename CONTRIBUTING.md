@@ -15,7 +15,7 @@ Welcome to CSS Monster project! Here are some guidelines to help you get started
 
 ### GitHub Flow
 
-We use the GitHub Flow branching model. Please create feature branches using the `feat/` prefix.
+We use **GitHub Flow** for our development process. The `main` branch is always stable and deployable. All changes are introduced via pull requests from **feature branches** to `main`. Each merged PR automatically triggers a new release and deployment through CI/CD.
 
 ### CSS
 
