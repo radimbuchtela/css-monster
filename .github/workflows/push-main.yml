@@ -40,6 +40,9 @@ jobs:
     outputs:
       new-version: ${{ steps.bump.outputs.version }}
     steps:
+      - name: debug
+        run: echo ${{ github.actor }}; echo '${{ toJSON(github) }}';
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
