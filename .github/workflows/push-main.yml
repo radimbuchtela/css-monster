@@ -72,7 +72,7 @@ jobs:
       - name: Commit new version, create Git tag and push changes and tag
         run: |
           git add .
-          git commit -m "Bump version to ${{ env.version }}"
+          git commit --no-verify -m "chore: release v${{ env.version }}"
           git tag "v${{ env.version }}"
           git push --no-verify origin ${{ github.ref_name }} --tags
 
