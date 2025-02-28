@@ -1,7 +1,7 @@
 {
   "name": "css-monster",
   "type": "module",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "description": "Cute Monster. Cartoon creature drawn in pure CSS/HTML.",
   "main": "index.js",
