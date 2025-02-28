@@ -117,7 +117,7 @@ jobs:
             exit 1
           fi
 
-          sed -i "" "s/$VERSION_PLACEHOLDER/$NEW_VERSION/g" "$HTML_FILE_PATH"
+          sed -i "s/$VERSION_PLACEHOLDER/$NEW_VERSION/g" "$HTML_FILE_PATH"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
