@@ -16,17 +16,26 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment, skipping runs queued between the run
+# in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production
+# deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   ga_node_version: 22
 
 jobs:
+# --------------------------
+# Job 1: Bump version
+# --------------------------
+# - Runs only when a human (not GitHub Actions bot) triggers the workflow
+# - Updates the version in package.json (and package-lock.json)
+# - Commits the version bump and creates a Git tag
   bump-version:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     outputs:
       new-version: ${{ steps.bump.outputs.version }}
@@ -34,6 +43,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          # Use deploy key to bypass branch protection and push to 'main'
           ssh-key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
 
       - name: Set up Node.js with version ${{ env.ga_node_version }}
@@ -62,13 +72,19 @@ jobs:
       - name: Commit new version, create Git tag and push changes and tag
         run: |
           git add .
-          git commit --no-verify -m "chore: release v${{ env.version }}"
+          git commit -m "Bump version to ${{ env.version }}"
           git tag "v${{ env.version }}"
           git push --no-verify origin ${{ github.ref_name }} --tags
 
-  # Deploy app
+# --------------------------
+# Job 2: Deploy to GitHub Pages
+# --------------------------
+# - Runs after `bump-version` job (if it was successful)
+# - Replaces `{{app-version}}` in HTML with the new version
+# - Uploads static site files and deploys to GitHub Pages
   deploy-to-pages:
     needs: bump-version
+    if: needs.bump-version.result == 'success' # Ensure bump-version ran successfully
     runs-on: ubuntu-latest
     environment:
       name: github-pages
