@@ -423,7 +423,7 @@
     border-radius: 27% 88% 30% 88% / 73% 53% 100% 48%;
     background: var(--bubble-color);
     color: var(--bubble-font-color);
-    font-size: 1.2em;
+    font-size: 19px;
     line-height: 50px;
     opacity: 0;
     text-align: center;
