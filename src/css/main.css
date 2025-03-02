@@ -5,7 +5,7 @@ ul {
 
 /* Remove default padding and margin */
 html,
-body
+body,
 ul,
 li {
     padding: 0;
@@ -27,13 +27,14 @@ p, h1, h2, h3, h4, h5, h6 {
  * Main Styles
  */
 html {
-    height:100%;
+    min-width: 400px;
+    height: 100%;
 }
 
 body {
     color: var(--dark-strong-color);
     font-family: Grandstander, Helvetica, sans-serif;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 a {
@@ -62,31 +63,40 @@ a:hover {
 .icon-www { mask-image: url('../icons/globe.svg'); }
 .icon-linkedin { mask-image: url('../icons/linkedin.svg'); }
 
+/**
+ * Page wrapper block
+ */
+.page-wrapper {
+    overflow: hidden;
+}
+
 
 /**
  * Header block
  */
 .header {
+    margin: 0 1em;
     color: var(--light-color);
     text-align: center;
 }
 
 .header__title {
-    margin: 36px 0 0;
-    font-size: 3.4em;
+    margin: 0.7em 0 0;
+    font-size: 3.4rem;
     font-weight: 700;
     text-shadow: 1px 1px 1px rgb(255 255 255 / 80%);
 }
 
 .header__description {
-    margin: 1px 0 14px;
-    font-size: 1.6em;
+    margin: 0.1em 0 0.5em;
+    font-size: 1.6rem;
     font-weight: 700;
 }
 
 .header__links {
     color: var(--dark-soft-color);
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    line-height: 1.2em;
 }
 
     .header__link-text {
@@ -96,6 +106,7 @@ a:hover {
 
     .header__author-name {
         color: var(--dark-main-color);
+        text-wrap: nowrap;
     }
 
     .socials__list,
@@ -137,13 +148,13 @@ a:hover {
  * Monsters block
  */
 .monsters__list {
-    margin-top: 2.5em;
+    margin: 2.5em 0;
     text-align: center;
 }
 
 .monster {
     display: inline-block;
-    margin: 0 20px;
+    margin: 0 20px 10px;
     vertical-align: bottom;
 }
 
