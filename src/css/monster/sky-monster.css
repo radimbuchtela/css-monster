@@ -18,10 +18,11 @@
     --arm-color: #22caef;
     --bubble-color: #fff;
     --bubble-font-color: #3e1831;
+    --monster-width: 354px;
 
     /* Styles */
     position: relative;
-    width: 354px;
+    width: var(--monster-width);
     height: 354px;
 }
 
@@ -501,10 +502,21 @@
  * Monster's Bubble
  */
 .sky-monster__bubble {
+    /**
+     * --left dynamically adjusts the bubble's horizontal position to keep it
+     * responsive across different screen sizes.
+     */
+    --left: clamp(
+        -157px,
+        calc((var(--monster-width) - 100vw) / 2),
+        -120px
+    );
+
     position: absolute;
     z-index: 4;
     top: 0;
-    left: -157px;
+    left: -157px; /* fallback for old browsers */
+    left: var(--left, -157px);
     width: fit-content;
     height: 50px;
     padding: 20px;

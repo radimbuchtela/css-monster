@@ -20,10 +20,11 @@
     --finger-color: #ffa249;
     --bubble-color: #fff;
     --bubble-font-color: #3e1831;
+    --monster-width: 318px;
 
     /* Styles */
     position: relative;
-    width: 318px;
+    width: var(--monster-width);
     height: 318px;
 }
 
@@ -413,10 +414,21 @@
  * Monster's Bubble
  */
 .lunee-monster__bubble {
+    /**
+     * --left dynamically adjusts the bubble's horizontal position to keep it
+     * responsive across different screen sizes.
+     */
+    --left: clamp(
+        200px,
+        calc(((var(--monster-width) + 100vw) / 2) - 326px),
+        238px
+    );
+
     position: absolute;
     z-index: 4;
     top: -50px;
-    left: 238px;
+    left: 238px; /* fallback for old browsers */
+    left: var(--left, 238px);
     width: fit-content;
     min-height: 50px;
     padding: 20px;
