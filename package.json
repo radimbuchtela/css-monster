@@ -14,6 +14,10 @@
     "stylelint": "stylelint \"./src/**/*.css\"",
     "eslint": "eslint \"./src/**/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radimbuchtela/css-monster.git"
+  },
   "keywords": [
     "drawing",
     "css",
@@ -21,6 +25,7 @@
   ],
   "license": "",
   "author": "Radim Buchtela <buchtela.radim@gmail.com>",
+  "homepage": "https://github.com/radimbuchtela/css-monster#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
